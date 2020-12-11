@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Django Forms</title>
+</head>
+
+<body>
+    <form action="create_customer" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ customer_form }}
+        </table>
+        <input type="submit" value="Create customer">
+    </form>
+
+    <hr>
+
+    <form action="deactivate_card" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ deactivate_card_form }}
+        </table>
+        <input type="submit" value="Deactivate card">
+    </form>
+
+    <hr>
+
+    <form action="create_card" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ card_form }}
+        </table>
+        <input type="submit" value="Create card">
+    </form>
+
+    <hr>
+
+
+
+    <table>
+        {% for customer in customers %}
+        <tr>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.address }}</td>
+            <td>{{ customer.balance }}</td>
+            <td>{{ customer.card.name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
